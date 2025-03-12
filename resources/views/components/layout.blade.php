@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <!-- Add this to your layout file's head section -->
+        <script src="https://cdn.tailwindcss.com"></script>
     @vite(['resources/js/app.js', 'resources/css/app.css'])
 </head>
 <body class="bg-black text-white font-sans">
@@ -15,7 +17,7 @@
         <nav class="flex justify-between items-center py-4 border-b border-white/10">
             <div>
                 <a href="/">
-                    <img src="{{ Vite::asset('resources/images/logo.svg') }}" alt="Logo">
+                    <img src="{{ Vite::asset('resources/images/logo.svg') }}" alt="Pixel Positions Logo">
                 </a>
             </div>
             <div class="flex gap-4 font-bold space-x-4">

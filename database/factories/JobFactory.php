@@ -22,7 +22,7 @@ class JobFactory extends Factory
             'title' => fake()->jobTitle(),
             'salary' => fake()->numberBetween(10000, 100000),
             'location' => fake()->city(),
-            'description' => fake()->paragraph(),
+            'description' => fake()->unique()->word(),
             'url' => fake()->url(),
             'featured' => fake()->boolean(),
 
