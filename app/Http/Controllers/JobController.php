@@ -6,6 +6,8 @@ use App\Models\Job;
 use App\Models\Tag;
 use App\Http\Requests\StoreJobRequest;
 use App\Http\Requests\UpdateJobRequest;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class JobController extends Controller
 {
@@ -27,15 +29,25 @@ class JobController extends Controller
      */
     public function create()
     {
-        //
+        return view('jobs.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreJobRequest $request)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => ['required'],
+            'description' => ['required', Rule::in(['full-time', 'part-time'])],
+            'location' => ['required'],
+            'salary' => ['required'],
+            'tags' => ['required'],
+            'url' => ['required', 'url'],
+            'featured' => ['required'],
+        ]);
+
+        Job::create($request->all());
     }
 
     /**
