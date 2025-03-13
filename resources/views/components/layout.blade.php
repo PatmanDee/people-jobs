@@ -21,14 +21,25 @@
                 </a>
             </div>
             <div class="flex gap-4 font-bold space-x-4">
-                <a href="/">Jobs</a>
-                <a href="/">Careers</a>
-                <a href="/">Salaries</a>
-                <a href="/">Companies</a>
+                <a href="#">Jobs</a>
+                <a href="#">Careers</a>
+                <a href="#">Salaries</a>
+                <a href="#">Companies</a>
             </div>
+
+            @auth
             <div>
-                <a href="/">Post a Job</a>
+                <a href="/jobs/create">Post a Job</a>
             </div>
+            @endauth
+
+            @guest
+            <div class="space-x-4 font-bold">
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+            </div>
+            @endguest
+
         </nav>
         <main class="mt-10 max-w-screen-lg mx-auto">
             {{ $slot }}

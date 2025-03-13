@@ -11,6 +11,5 @@
 
         <x-forms.button>Login</x-forms.button>
 
-        <x-forms.button-link href="/register">Don't have an account? Register</x-forms.button-link>
     </x-forms.form>
 </x-layout>
