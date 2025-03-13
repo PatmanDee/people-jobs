@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\Password;
+use App\Models\User;
+use App\Models\Employer;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rules\File;
+use Illuminate\Support\Facades\Auth;
 
 class RegisteredUserController extends Controller
 {
@@ -27,7 +33,34 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Validate all the attributes
+        $userAttributes = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'confirmed', Password::min(6)],
+        ]);
+
+        $employerAttributes = $request->validate([
+            'employer_name' => ['required', 'string', 'max:255'],
+            'employer_logo' => ['required', File::types(['jpg', 'png', 'jpeg', 'svg', 'gif', 'webp','avif'])],
+        ]);
+
+        //Create the user
+        $user = User::create($userAttributes);
+
+        //Store the logo
+        $logoPath = $request->employer_logo->store('logos');
+
+        //Create the employer
+        $user->employer()->create([
+            'name' => $employerAttributes['employer_name'],
+            'logo' => $logoPath,
+        ]);
+
+        Auth::login($user);
+
+        return redirect('/');
+
     }
 
     /**

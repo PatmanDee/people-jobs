@@ -13,9 +13,7 @@
 
         <x-forms.input label="Employer Name" name="employer_name" type="text" placeholder="Employer Name" />
         <x-forms.input label="Employer Logo" name="employer_logo" type="file" placeholder="Employer Logo" />
-        <x-forms.input label="Employer Email" name="employer_email" type="email" placeholder="Employer Email" />
-        <x-forms.input label="Employer Phone" name="employer_phone" type="text" placeholder="Employer Phone" />
 
-        <x-forms.button>Register</x-forms.button>
+        <x-forms.button>Create Account</x-forms.button>
     </x-forms.form>
 </x-layout>
