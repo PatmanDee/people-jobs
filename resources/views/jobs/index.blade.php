@@ -3,9 +3,12 @@
     <div class="space-y-10">
         <section class="text-center">
             <h1 class="text-4xl font-bold">Find your dream Job</h1>
-            <form action="" method="GET">
+            {{-- <form action="" method="GET">
                 <input type="text" name="query" placeholder="Search for a job" class="w-full rounded-xl bg-white/5 border border-white/10 px-5 py-4 mt-4 max-w-xl mx-auto">
-            </form>
+            </form> --}}
+            <x-forms.form method="GET" action="/search" class="mt-6 max-w-xl mx-auto">
+                <x-forms.input name="q" type="text" placeholder="Search for a job" />
+            </x-forms.form>
         </section>
         <section>
             <x-section-heading>Featured Jobs</x-section-heading>
