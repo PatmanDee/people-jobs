@@ -22,7 +22,9 @@
             <x-section-heading>Tags</x-section-heading>
             <div class="space-x-1 mt-6">
                 @foreach ($tags as $tag)
-                    <x-tag class="hover:bg-white/20" :$tag />
+                    <x-tag class="hover:bg-white/20" :$tag >
+                        {{ $tag->name }}
+                    </x-tag>
                 @endforeach
             </div>
         </section>
